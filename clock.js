@@ -1,5 +1,6 @@
 var nightTime = false;
-
+var audio = new Audio('img/alarm_beep.mp3');
+var interval =  setInterval(swapBackgrounds, 30 * 60 * 1000) ;
 
 function startTime() {
     var today = new Date();
@@ -8,11 +9,20 @@ function startTime() {
     var s = today.getSeconds();
     m = checkTime(m);
     s = checkTime(s);
-    if (s >= 20 || s < 7 ) {
+    if (!nightTime && (h >= 20 || h < 7 )) {
         nightTime = true;
+        clearInterval(interval);
+        swapBackgrounds();
+        interval = setInterval(swapBackgrounds, 10 * 60 * 1000);
     }
-    else
-        {nightTime = false;}
+    else if (nightTime && h >=7 && h <=20){
+        // Time to wakeup! 
+        nightTime = false;
+        clearInterval(interval);
+        swapBackgrounds();
+        audio.play();
+        interval = setInterval(swapBackgrounds, 5 * 60 * 1000);
+    }
     document.getElementById('clock').innerHTML =
     h + " : " + m + " : " + s;
     var t = setTimeout(startTime, 500);
@@ -37,14 +47,10 @@ function swapBackgrounds() {
        backgrounds = day_backgrounds;
     }
   if(++imgIdx >= backgrounds.length) {
-    var audio = new Audio('img/alarm_beep.mp3');
-audio.play();
     imgIdx = 0;
   }
 
-  $('.background').animate({ opacity: 0}, 500, function() {
-    $('.background').css("background-image", "url('img/" + backgrounds[imgIdx] + "')").animate({opacity: 1},500);
+  $('.background').animate({ opacity: 0}, 1000, function() {
+    $('.background').css("background-image", "url('img/" + backgrounds[imgIdx] + "')").animate({opacity: 1},1000);
   });
 }
-
-setInterval(swapBackgrounds, 5000);
