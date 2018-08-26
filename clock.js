@@ -15,7 +15,7 @@ function checkTime(i) {
 }
 
 var backgrounds = [
-  'moana_1.jpg','moana_2.jpg', 'moana_3.jpg'];
+  'moana_1.jpg','moana_2.jpg', 'moana_3.jpg', 'moana_4.jpg'];
 
 
 var imgIdx = 0;
@@ -25,9 +25,9 @@ function swapBackgrounds() {
   }
   console.log(backgrounds[imgIdx]);
   console.log(imgIdx);
-  $('.background').animate({ opacity: 0}, 1000, function() {
-    $('.background').css("background-image", "url('img/" + backgrounds[imgIdx] + "')").animate({opacity: 1},1000);
+  $('.background').animate({ opacity: 0}, 500, function() {
+    $('.background').css("background-image", "url('img/" + backgrounds[imgIdx] + "')").animate({opacity: 1},500);
   });
 }
 
-setInterval(swapBackgrounds, 5000);
+setInterval(swapBackgrounds, 30000);
