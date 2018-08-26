@@ -15,7 +15,7 @@ function startTime() {
         swapBackgrounds();
         interval = setInterval(swapBackgrounds, 10 * 60 * 1000);
     }
-    else if (nightTime && h >=7 && h <=20){
+    else if (nightTime && h >=7 && h <20){
         // Time to wakeup! 
         nightTime = false;
         clearInterval(interval);
