@@ -26,7 +26,6 @@ body{
     position: absolute;
     left: 0px;
     top: 0px;
-    z-index: -1;
     background-color: rgba(25, 25, 25, .5);
 }
 
