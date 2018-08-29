@@ -4,7 +4,7 @@ var audio = new Audio('img/wake_up.mp3');
 var wakeupHour = 7;
 var wakeupMinute=15;
 var bedTimeHour = 20;
-var nightTimeInterval = 10000;// 10 * 60 * 1000;
+var nightTimeInterval = 10 * 60 * 1000;
 var dayTimeInterval = 5 * 60 * 1000;
 var interval =  setInterval(swapBackgrounds, dayTimeInterval) ;
 
